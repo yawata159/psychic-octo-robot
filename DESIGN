@@ -1,0 +1,38 @@
+MusX by Seiji Yawata
+
+DESCRIPTION
+MusX is a music player with a text-based user interface with support for various audio formats, play queues, categorization, and search capabilities.
+A terminal window will be divided into panes containing the categories assigned to each song (Artist or album in one, and the list of tracks in another)
+At the bottom of the screen, a progress bar will show how far along a song is.
+
+TECHNICAL DESIGN
+    TOPICS COVERED
+    - Working with files: the final binary will read from the directory it is being called from in the terminal and will categorize songs in it
+      according to the song metadata withing the song files.
+    - Processes: the process running the player will be forked off to create a child process that will handle actions concerning the song
+      currently being played.
+    - Signals: Interrupt signals will be used to stop songs in child processes from playing. If they are sent when no songs are playing, the
+      program will stop running.
+
+    DATA STRUCTURES
+    - Two arrays will contain the list of names of available artists and albums. When an artist/album is chosen in the graphical interface, an array of 
+      songs associated with it will be generated and will be displayed on a pane.
+    - Each song will be a struct with parsed metadata as its attributes.
+    
+    ALGORITHMS
+    - Parsing through the available song files to return a song list associated with an artist/album.
+    - Searching based on text input.
+    - Sorting songs according to their metadata (song length, alphabetical, year of release).
+    
+    ADDITIONAL DETAILS
+    - ncurses will be used to display the text interface in the terminal.
+    - libmpv will handle the actual playing of songs.
+    - Metadata parsing will be done with libavcodec.
+
+    TIMELINE
+    - Jan 09: Get ncurses working, with dummy data to choose from.
+    - Jan 13: Set up file parsing and display of data structures in panes.
+    - Jan 16: Metadata parsing and process forking (to play songs).
+    - Jan 18: Playlist queues and signal handling.
+    - Jan 20: Basic functionality complete.
+    - Jan 25: Song sorting and searching.
