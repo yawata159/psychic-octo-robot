@@ -1,1 +1,6 @@
-# psychic-octo-robot
+# MusX
+by Seiji Yawata
+
+## Dependencies
+
+## Compilation
