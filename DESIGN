@@ -39,4 +39,4 @@ TECHNICAL DESIGN
     - Jan 16: Metadata parsing and process forking (to play songs).
     - Jan 18: Playlist queues and signal handling.
     - Jan 20: Basic functionality complete.
-    - Jan 25: Song sorting and searching.
+    - Jan 24: Song sorting and searching.
