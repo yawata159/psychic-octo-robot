@@ -1,38 +1,38 @@
-#include <ncurses/ncurses.h>
+#include <ncurses.h>
 
 int main() {
     WINDOW *win1;
     WINDOW *win2;
-    int height, width, starty, startx;
+    int height, width;
     
 
     initscr();
     cbreak();
     keypad(stdscr, TRUE);
-//    printw("Hello World !!!");
+    noecho();
+    curs_set(0);
     
     height = LINES;
     width = COLS / 2;
-    starty = 0;
-    startx = 0;
 
-    win1 = newwin(height, width, starty, startx);
+
+    win1 = newwin(height, width, 0, 0);
     box(win1, 0, 0);
-    wrefresh(win1);
 
-    startx = COLS / 2;
-
-    win2 = newwin(height, width, starty, startx);
+    win2 = newwin(height, width, 0, COLS / 2);
     box(win2, 0, 0);
-    wrefresh(win2);
 
-    mvwprintw(win1, 0, 0, "Hello World");
-    mvwprintw(win2, 0, 0, "Hello World2");
-
+    refresh();
     wrefresh(win1);
     wrefresh(win2);
-
+    
     getch();
+
+    mvwprintw(win1, 1, 1,  "hello");
+    wrefresh(win1);
+    
+    getch();
+
     endwin();
     return 0;
 }
